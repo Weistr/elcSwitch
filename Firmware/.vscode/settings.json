@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "pulseout.h": "c",
+        "user_main.h": "c",
+        "main.h": "c",
+        "stm32f0xx_hal.h": "c",
+        "bsp_flash.h": "c",
+        "bsp_delay.h": "c"
+    },
+    "makefile.configureOnOpen": true
+}

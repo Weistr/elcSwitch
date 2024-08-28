@@ -1,0 +1,403 @@
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"bsp_led.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.LED_ONOFF,"ax",%progbits
+  16              		.align	1
+  17              		.global	LED_ONOFF
+  18              		.arch armv6s-m
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	LED_ONOFF:
+  25              	.LVL0:
+  26              	.LFB40:
+  27              		.file 1 "Bsp/bsp_led.c"
+   1:Bsp/bsp_led.c **** #include "bsp_led.h"
+   2:Bsp/bsp_led.c **** #include "stdbool.h"
+   3:Bsp/bsp_led.c **** uint8_t LED_MODE[LEDtotalNumber];
+   4:Bsp/bsp_led.c **** 
+   5:Bsp/bsp_led.c **** void LED_ONOFF(uint8_t ledn, bool sta)
+   6:Bsp/bsp_led.c **** {
+  28              		.loc 1 6 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 6 1 is_stmt 0 view .LVU1
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+   7:Bsp/bsp_led.c **** 	switch(ledn)
+  38              		.loc 1 7 2 is_stmt 1 view .LVU2
+  39 0002 0028     		cmp	r0, #0
+  40 0004 02D0     		beq	.L2
+  41 0006 0128     		cmp	r0, #1
+  42 0008 10D0     		beq	.L3
+  43              	.LVL1:
+  44              	.L1:
+   8:Bsp/bsp_led.c **** 	{
+   9:Bsp/bsp_led.c **** 		case 0:
+  10:Bsp/bsp_led.c **** 			if(sta)HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
+  11:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET);
+  12:Bsp/bsp_led.c **** 			break;
+  13:Bsp/bsp_led.c **** 		case 1:
+  14:Bsp/bsp_led.c **** 			if(sta)HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 2
+
+
+  15:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+  16:Bsp/bsp_led.c **** 			break;		
+  17:Bsp/bsp_led.c **** 	}
+  18:Bsp/bsp_led.c **** }
+  45              		.loc 1 18 1 is_stmt 0 view .LVU3
+  46              		@ sp needed
+  47 000a 10BD     		pop	{r4, pc}
+  48              	.LVL2:
+  49              	.L2:
+  10:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET);
+  50              		.loc 1 10 4 is_stmt 1 view .LVU4
+  10:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET);
+  51              		.loc 1 10 6 is_stmt 0 view .LVU5
+  52 000c 0029     		cmp	r1, #0
+  53 000e 06D0     		beq	.L5
+  10:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET);
+  54              		.loc 1 10 11 is_stmt 1 discriminator 1 view .LVU6
+  55 0010 9020     		movs	r0, #144
+  56              	.LVL3:
+  10:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET);
+  57              		.loc 1 10 11 is_stmt 0 discriminator 1 view .LVU7
+  58 0012 0122     		movs	r2, #1
+  59 0014 2021     		movs	r1, #32
+  60              	.LVL4:
+  10:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET);
+  61              		.loc 1 10 11 discriminator 1 view .LVU8
+  62 0016 C005     		lsls	r0, r0, #23
+  63 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  64              	.LVL5:
+  65 001c F5E7     		b	.L1
+  66              	.LVL6:
+  67              	.L5:
+  11:Bsp/bsp_led.c **** 			break;
+  68              		.loc 1 11 9 is_stmt 1 view .LVU9
+  69 001e 9020     		movs	r0, #144
+  70              	.LVL7:
+  11:Bsp/bsp_led.c **** 			break;
+  71              		.loc 1 11 9 is_stmt 0 view .LVU10
+  72 0020 0022     		movs	r2, #0
+  73 0022 2021     		movs	r1, #32
+  74              	.LVL8:
+  11:Bsp/bsp_led.c **** 			break;
+  75              		.loc 1 11 9 view .LVU11
+  76 0024 C005     		lsls	r0, r0, #23
+  77 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  78              	.LVL9:
+  79 002a EEE7     		b	.L1
+  80              	.LVL10:
+  81              	.L3:
+  14:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+  82              		.loc 1 14 4 is_stmt 1 view .LVU12
+  14:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+  83              		.loc 1 14 6 is_stmt 0 view .LVU13
+  84 002c 0029     		cmp	r1, #0
+  85 002e 07D0     		beq	.L6
+  14:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+  86              		.loc 1 14 11 is_stmt 1 discriminator 1 view .LVU14
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 3
+
+
+  87 0030 8021     		movs	r1, #128
+  88              	.LVL11:
+  14:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+  89              		.loc 1 14 11 is_stmt 0 discriminator 1 view .LVU15
+  90 0032 9020     		movs	r0, #144
+  91              	.LVL12:
+  14:Bsp/bsp_led.c **** 			else HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+  92              		.loc 1 14 11 discriminator 1 view .LVU16
+  93 0034 0122     		movs	r2, #1
+  94 0036 8900     		lsls	r1, r1, #2
+  95 0038 C005     		lsls	r0, r0, #23
+  96 003a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  97              	.LVL13:
+  98 003e E4E7     		b	.L1
+  99              	.LVL14:
+ 100              	.L6:
+  15:Bsp/bsp_led.c **** 			break;		
+ 101              		.loc 1 15 9 is_stmt 1 view .LVU17
+ 102 0040 8021     		movs	r1, #128
+ 103              	.LVL15:
+  15:Bsp/bsp_led.c **** 			break;		
+ 104              		.loc 1 15 9 is_stmt 0 view .LVU18
+ 105 0042 9020     		movs	r0, #144
+ 106              	.LVL16:
+  15:Bsp/bsp_led.c **** 			break;		
+ 107              		.loc 1 15 9 view .LVU19
+ 108 0044 0022     		movs	r2, #0
+ 109 0046 8900     		lsls	r1, r1, #2
+ 110 0048 C005     		lsls	r0, r0, #23
+ 111 004a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 112              	.LVL17:
+ 113              		.loc 1 18 1 view .LVU20
+ 114 004e DCE7     		b	.L1
+ 115              		.cfi_endproc
+ 116              	.LFE40:
+ 118              		.section	.text.led_sta_update_20ms,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	led_sta_update_20ms
+ 121              		.syntax unified
+ 122              		.code	16
+ 123              		.thumb_func
+ 124              		.fpu softvfp
+ 126              	led_sta_update_20ms:
+ 127              	.LFB41:
+  19:Bsp/bsp_led.c **** void led_sta_update_20ms()
+  20:Bsp/bsp_led.c **** {
+ 128              		.loc 1 20 1 is_stmt 1 view -0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132 0000 10B5     		push	{r4, lr}
+ 133              	.LCFI1:
+ 134              		.cfi_def_cfa_offset 8
+ 135              		.cfi_offset 4, -8
+ 136              		.cfi_offset 14, -4
+  21:Bsp/bsp_led.c **** 	static uint8_t led_cnt[LEDtotalNumber];
+ 137              		.loc 1 21 2 view .LVU22
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 4
+
+
+  22:Bsp/bsp_led.c **** 	static bool led_sta[LEDtotalNumber];//1: on 0:off
+ 138              		.loc 1 22 2 view .LVU23
+  23:Bsp/bsp_led.c **** 	for(uint8_t i=0; i<LEDtotalNumber; i++)
+ 139              		.loc 1 23 2 view .LVU24
+ 140              	.LBB2:
+ 141              		.loc 1 23 6 view .LVU25
+ 142              	.LVL18:
+ 143              		.loc 1 23 14 is_stmt 0 view .LVU26
+ 144 0002 0024     		movs	r4, #0
+ 145              		.loc 1 23 2 view .LVU27
+ 146 0004 11E0     		b	.L8
+ 147              	.LVL19:
+ 148              	.L10:
+  24:Bsp/bsp_led.c **** 	{
+  25:Bsp/bsp_led.c **** 		switch(LED_MODE[i])
+ 149              		.loc 1 25 3 view .LVU28
+ 150 0006 032B     		cmp	r3, #3
+ 151 0008 0DD1     		bne	.L13
+  26:Bsp/bsp_led.c **** 		{
+  27:Bsp/bsp_led.c **** 			case LEDconstOFF:
+  28:Bsp/bsp_led.c **** 				LED_ONOFF(i,0);
+  29:Bsp/bsp_led.c **** 				break;
+  30:Bsp/bsp_led.c **** 			case LEDconstON:
+  31:Bsp/bsp_led.c **** 				LED_ONOFF(i,1);
+  32:Bsp/bsp_led.c **** 				break;
+  33:Bsp/bsp_led.c **** 			case LEDblinkONE:
+  34:Bsp/bsp_led.c **** 				led_cnt[i]++;
+  35:Bsp/bsp_led.c **** 				if(led_cnt[i] > 25)
+  36:Bsp/bsp_led.c **** 				{
+  37:Bsp/bsp_led.c **** 					led_cnt[i] = 0;
+  38:Bsp/bsp_led.c **** 					led_sta[i] = !led_sta[i];
+  39:Bsp/bsp_led.c **** 				}
+  40:Bsp/bsp_led.c **** 				LED_ONOFF(i,led_sta[i]);
+  41:Bsp/bsp_led.c **** 				break;
+  42:Bsp/bsp_led.c **** 			case LEDblinkWithCycle:
+  43:Bsp/bsp_led.c **** 				led_sta[i] = !led_sta[i];
+ 152              		.loc 1 43 5 is_stmt 1 view .LVU29
+ 153              		.loc 1 43 26 is_stmt 0 view .LVU30
+ 154 000a 1B4B     		ldr	r3, .L18
+ 155 000c 195D     		ldrb	r1, [r3, r4]
+ 156              		.loc 1 43 5 view .LVU31
+ 157 000e 0120     		movs	r0, #1
+ 158 0010 4140     		eors	r1, r0
+ 159 0012 C9B2     		uxtb	r1, r1
+ 160              		.loc 1 43 16 view .LVU32
+ 161 0014 1955     		strb	r1, [r3, r4]
+  44:Bsp/bsp_led.c **** 				LED_ONOFF(i,led_sta[i]);
+ 162              		.loc 1 44 5 is_stmt 1 view .LVU33
+ 163 0016 2000     		movs	r0, r4
+ 164 0018 FFF7FEFF 		bl	LED_ONOFF
+ 165              	.LVL20:
+  45:Bsp/bsp_led.c **** 				break;
+ 166              		.loc 1 45 5 view .LVU34
+ 167 001c 03E0     		b	.L13
+ 168              	.L11:
+  28:Bsp/bsp_led.c **** 				break;
+ 169              		.loc 1 28 5 view .LVU35
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 5
+
+
+ 170 001e 0021     		movs	r1, #0
+ 171 0020 2000     		movs	r0, r4
+ 172 0022 FFF7FEFF 		bl	LED_ONOFF
+ 173              	.LVL21:
+  29:Bsp/bsp_led.c **** 			case LEDconstON:
+ 174              		.loc 1 29 5 view .LVU36
+ 175              	.L13:
+  23:Bsp/bsp_led.c **** 	{
+ 176              		.loc 1 23 37 discriminator 2 view .LVU37
+  23:Bsp/bsp_led.c **** 	{
+ 177              		.loc 1 23 38 is_stmt 0 discriminator 2 view .LVU38
+ 178 0026 0134     		adds	r4, r4, #1
+ 179              	.LVL22:
+  23:Bsp/bsp_led.c **** 	{
+ 180              		.loc 1 23 38 discriminator 2 view .LVU39
+ 181 0028 E4B2     		uxtb	r4, r4
+ 182              	.LVL23:
+ 183              	.L8:
+  23:Bsp/bsp_led.c **** 	{
+ 184              		.loc 1 23 19 is_stmt 1 discriminator 1 view .LVU40
+  23:Bsp/bsp_led.c **** 	{
+ 185              		.loc 1 23 2 is_stmt 0 discriminator 1 view .LVU41
+ 186 002a 012C     		cmp	r4, #1
+ 187 002c 23D8     		bhi	.L17
+  25:Bsp/bsp_led.c **** 		{
+ 188              		.loc 1 25 3 is_stmt 1 view .LVU42
+  25:Bsp/bsp_led.c **** 		{
+ 189              		.loc 1 25 18 is_stmt 0 view .LVU43
+ 190 002e 2200     		movs	r2, r4
+ 191 0030 124B     		ldr	r3, .L18+4
+ 192 0032 1B5D     		ldrb	r3, [r3, r4]
+  25:Bsp/bsp_led.c **** 		{
+ 193              		.loc 1 25 3 view .LVU44
+ 194 0034 022B     		cmp	r3, #2
+ 195 0036 09D0     		beq	.L9
+ 196 0038 E5D8     		bhi	.L10
+ 197 003a 002B     		cmp	r3, #0
+ 198 003c EFD0     		beq	.L11
+ 199 003e 012B     		cmp	r3, #1
+ 200 0040 F1D1     		bne	.L13
+  31:Bsp/bsp_led.c **** 				break;
+ 201              		.loc 1 31 5 is_stmt 1 view .LVU45
+ 202 0042 0121     		movs	r1, #1
+ 203 0044 2000     		movs	r0, r4
+ 204 0046 FFF7FEFF 		bl	LED_ONOFF
+ 205              	.LVL24:
+  32:Bsp/bsp_led.c **** 			case LEDblinkONE:
+ 206              		.loc 1 32 5 view .LVU46
+ 207 004a ECE7     		b	.L13
+ 208              	.L9:
+  34:Bsp/bsp_led.c **** 				if(led_cnt[i] > 25)
+ 209              		.loc 1 34 5 view .LVU47
+  34:Bsp/bsp_led.c **** 				if(led_cnt[i] > 25)
+ 210              		.loc 1 34 12 is_stmt 0 view .LVU48
+ 211 004c 0C49     		ldr	r1, .L18+8
+ 212 004e 0B5D     		ldrb	r3, [r1, r4]
+  34:Bsp/bsp_led.c **** 				if(led_cnt[i] > 25)
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 6
+
+
+ 213              		.loc 1 34 15 view .LVU49
+ 214 0050 0133     		adds	r3, r3, #1
+ 215 0052 DBB2     		uxtb	r3, r3
+ 216 0054 0B55     		strb	r3, [r1, r4]
+  35:Bsp/bsp_led.c **** 				{
+ 217              		.loc 1 35 5 is_stmt 1 view .LVU50
+  35:Bsp/bsp_led.c **** 				{
+ 218              		.loc 1 35 7 is_stmt 0 view .LVU51
+ 219 0056 192B     		cmp	r3, #25
+ 220 0058 07D9     		bls	.L15
+  37:Bsp/bsp_led.c **** 					led_sta[i] = !led_sta[i];
+ 221              		.loc 1 37 6 is_stmt 1 view .LVU52
+  37:Bsp/bsp_led.c **** 					led_sta[i] = !led_sta[i];
+ 222              		.loc 1 37 17 is_stmt 0 view .LVU53
+ 223 005a 0B00     		movs	r3, r1
+ 224 005c 0021     		movs	r1, #0
+ 225 005e 1955     		strb	r1, [r3, r4]
+  38:Bsp/bsp_led.c **** 				}
+ 226              		.loc 1 38 6 is_stmt 1 view .LVU54
+  38:Bsp/bsp_led.c **** 				}
+ 227              		.loc 1 38 27 is_stmt 0 view .LVU55
+ 228 0060 0549     		ldr	r1, .L18
+ 229 0062 0B5D     		ldrb	r3, [r1, r4]
+  38:Bsp/bsp_led.c **** 				}
+ 230              		.loc 1 38 6 view .LVU56
+ 231 0064 0120     		movs	r0, #1
+ 232 0066 4340     		eors	r3, r0
+  38:Bsp/bsp_led.c **** 				}
+ 233              		.loc 1 38 17 view .LVU57
+ 234 0068 0B55     		strb	r3, [r1, r4]
+ 235              	.L15:
+  40:Bsp/bsp_led.c **** 				break;
+ 236              		.loc 1 40 5 is_stmt 1 view .LVU58
+ 237 006a 034B     		ldr	r3, .L18
+ 238 006c 995C     		ldrb	r1, [r3, r2]
+ 239 006e 2000     		movs	r0, r4
+ 240 0070 FFF7FEFF 		bl	LED_ONOFF
+ 241              	.LVL25:
+  41:Bsp/bsp_led.c **** 			case LEDblinkWithCycle:
+ 242              		.loc 1 41 5 view .LVU59
+ 243 0074 D7E7     		b	.L13
+ 244              	.L17:
+ 245              	.LBE2:
+  46:Bsp/bsp_led.c **** 		}
+  47:Bsp/bsp_led.c **** 	}
+  48:Bsp/bsp_led.c **** }
+ 246              		.loc 1 48 1 is_stmt 0 view .LVU60
+ 247              		@ sp needed
+ 248              	.LVL26:
+ 249              		.loc 1 48 1 view .LVU61
+ 250 0076 10BD     		pop	{r4, pc}
+ 251              	.L19:
+ 252              		.align	2
+ 253              	.L18:
+ 254 0078 00000000 		.word	.LANCHOR1
+ 255 007c 00000000 		.word	LED_MODE
+ 256 0080 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 7
+
+
+ 257              		.cfi_endproc
+ 258              	.LFE41:
+ 260              		.comm	LED_MODE,2,4
+ 261              		.section	.bss.led_cnt.6126,"aw",%nobits
+ 262              		.align	2
+ 263              		.set	.LANCHOR0,. + 0
+ 266              	led_cnt.6126:
+ 267 0000 0000     		.space	2
+ 268              		.section	.bss.led_sta.6127,"aw",%nobits
+ 269              		.align	2
+ 270              		.set	.LANCHOR1,. + 0
+ 273              	led_sta.6127:
+ 274 0000 0000     		.space	2
+ 275              		.text
+ 276              	.Letext0:
+ 277              		.file 2 "c:\\tools\\gd\\embeddedbuilder_v1.4.1.23782\\embeddedbuilder_v1.4.1.23782\\tools\\gnu too
+ 278              		.file 3 "c:\\tools\\gd\\embeddedbuilder_v1.4.1.23782\\embeddedbuilder_v1.4.1.23782\\tools\\gnu too
+ 279              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h"
+ 280              		.file 5 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f070x6.h"
+ 281              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
+ 282              		.file 7 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h"
+ 283              		.file 8 "Bsp/inc/bsp_led.h"
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 bsp_led.c
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:16     .text.LED_ONOFF:00000000 $t
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:24     .text.LED_ONOFF:00000000 LED_ONOFF
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:119    .text.led_sta_update_20ms:00000000 $t
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:126    .text.led_sta_update_20ms:00000000 led_sta_update_20ms
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:254    .text.led_sta_update_20ms:00000078 $d
+                            *COM*:00000002 LED_MODE
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:262    .bss.led_cnt.6126:00000000 $d
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:266    .bss.led_cnt.6126:00000000 led_cnt.6126
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:269    .bss.led_sta.6127:00000000 $d
+C:\Users\15612\AppData\Local\Temp\ccTvdA9Y.s:273    .bss.led_sta.6127:00000000 led_sta.6127
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin

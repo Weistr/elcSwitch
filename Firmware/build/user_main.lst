@@ -1,0 +1,469 @@
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"user_main.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.basicTask_entry,"ax",%progbits
+  16              		.align	1
+  17              		.global	basicTask_entry
+  18              		.arch armv6s-m
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	basicTask_entry:
+  25              	.LFB40:
+  26              		.file 1 "UserApp/user_main.c"
+   1:UserApp/user_main.c **** #include "stdbool.h"
+   2:UserApp/user_main.c **** #include "user_main.h"
+   3:UserApp/user_main.c **** 
+   4:UserApp/user_main.c **** #include "bsp_led.h"
+   5:UserApp/user_main.c **** #include "bsp_uart.h"
+   6:UserApp/user_main.c **** #include "bsp_flash.h"
+   7:UserApp/user_main.c **** #include "bsp_key.h"
+   8:UserApp/user_main.c **** #include "pulseOut.h"
+   9:UserApp/user_main.c **** /***************************************************/
+  10:UserApp/user_main.c **** /*********************TASK************************/
+  11:UserApp/user_main.c **** /***************************************************/
+  12:UserApp/user_main.c **** //========================================================================
+  13:UserApp/user_main.c **** // 函数: basic  task
+  14:UserApp/user_main.c **** // 描述: .
+  15:UserApp/user_main.c **** // 参数: None.
+  16:UserApp/user_main.c **** // 返回: None.
+  17:UserApp/user_main.c **** //========================================================================
+  18:UserApp/user_main.c **** 	
+  19:UserApp/user_main.c **** void basicTask_entry()
+  20:UserApp/user_main.c **** {
+  27              		.loc 1 20 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  21:UserApp/user_main.c **** 	led_sta_update_20ms();	
+  36              		.loc 1 21 2 view .LVU1
+  37 0002 FFF7FEFF 		bl	led_sta_update_20ms
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 2
+
+
+  38              	.LVL0:
+  22:UserApp/user_main.c **** 	bsp_keyScan_20ms();
+  39              		.loc 1 22 2 view .LVU2
+  40 0006 FFF7FEFF 		bl	bsp_keyScan_20ms
+  41              	.LVL1:
+  23:UserApp/user_main.c **** }
+  42              		.loc 1 23 1 is_stmt 0 view .LVU3
+  43              		@ sp needed
+  44 000a 10BD     		pop	{r4, pc}
+  45              		.cfi_endproc
+  46              	.LFE40:
+  48              		.section	.text.user_main,"ax",%progbits
+  49              		.align	1
+  50              		.global	user_main
+  51              		.syntax unified
+  52              		.code	16
+  53              		.thumb_func
+  54              		.fpu softvfp
+  56              	user_main:
+  57              	.LFB41:
+  24:UserApp/user_main.c **** /***************************************************/
+  25:UserApp/user_main.c **** /*********************初始化************************/
+  26:UserApp/user_main.c **** /***************************************************/
+  27:UserApp/user_main.c **** 
+  28:UserApp/user_main.c **** void user_main()
+  29:UserApp/user_main.c **** {
+  58              		.loc 1 29 1 is_stmt 1 view -0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62 0000 10B5     		push	{r4, lr}
+  63              	.LCFI1:
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 4, -8
+  66              		.cfi_offset 14, -4
+  30:UserApp/user_main.c **** 	sysParmReadFlash();
+  67              		.loc 1 30 2 view .LVU5
+  68 0002 FFF7FEFF 		bl	sysParmReadFlash
+  69              	.LVL2:
+  31:UserApp/user_main.c **** 	uart_init();
+  70              		.loc 1 31 2 view .LVU6
+  71 0006 FFF7FEFF 		bl	uart_init
+  72              	.LVL3:
+  32:UserApp/user_main.c **** 	pluseOutInit();
+  73              		.loc 1 32 2 view .LVU7
+  74 000a FFF7FEFF 		bl	pluseOutInit
+  75              	.LVL4:
+  33:UserApp/user_main.c **** 	
+  34:UserApp/user_main.c **** }
+  76              		.loc 1 34 1 is_stmt 0 view .LVU8
+  77              		@ sp needed
+  78 000e 10BD     		pop	{r4, pc}
+  79              		.cfi_endproc
+  80              	.LFE41:
+  82              		.section	.text.task1,"ax",%progbits
+  83              		.align	1
+  84              		.global	task1
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 3
+
+
+  85              		.syntax unified
+  86              		.code	16
+  87              		.thumb_func
+  88              		.fpu softvfp
+  90              	task1:
+  91              	.LFB42:
+  35:UserApp/user_main.c **** 
+  36:UserApp/user_main.c **** void task1()
+  37:UserApp/user_main.c **** {
+  92              		.loc 1 37 1 is_stmt 1 view -0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  38:UserApp/user_main.c **** }
+  97              		.loc 1 38 1 view .LVU10
+  98              		@ sp needed
+  99 0000 7047     		bx	lr
+ 100              		.cfi_endproc
+ 101              	.LFE42:
+ 103              		.section	.text.Task_Marks_Handler_Callback,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	Task_Marks_Handler_Callback
+ 106              		.syntax unified
+ 107              		.code	16
+ 108              		.thumb_func
+ 109              		.fpu softvfp
+ 111              	Task_Marks_Handler_Callback:
+ 112              	.LFB43:
+  39:UserApp/user_main.c **** //========================================================================
+  40:UserApp/user_main.c **** //                         本地变量声明 & 任务分配
+  41:UserApp/user_main.c **** //========================================================================
+  42:UserApp/user_main.c **** 
+  43:UserApp/user_main.c **** 
+  44:UserApp/user_main.c **** extern void pulseOut_task(void);
+  45:UserApp/user_main.c **** extern void uart_timeOut(void);
+  46:UserApp/user_main.c **** static TASK_COMPONENTS Task_Comps[]=
+  47:UserApp/user_main.c **** {
+  48:UserApp/user_main.c **** //状态  计数  周期  函数
+  49:UserApp/user_main.c **** 	{0, 20, 20, basicTask_entry},				/* task 1 Period： 2ms*/
+  50:UserApp/user_main.c **** 	{0, 20, 20, pulseOut_task},				/* task 2 Period： 100ms 飞控设置*/
+  51:UserApp/user_main.c **** 	{0, 100, 100, uart_timeOut},			/* task 3 Period： 300ms 电池电压*/
+  52:UserApp/user_main.c **** //	{0, 20, 20, adc_scan},					/* task 4 Period： 500ms */
+  53:UserApp/user_main.c **** //	{0, 500, 500, task_B},					/* task 5 Period： 500ms */
+  54:UserApp/user_main.c **** //	{0, 500, 500, task_C},					/* task 6 Period： 500ms */
+  55:UserApp/user_main.c **** //	{0, 500, 500, task_D},					/* task 7 Period： 500ms */
+  56:UserApp/user_main.c **** //	{0, 500, 500, task_E},					/* task 8 Period： 500ms */
+  57:UserApp/user_main.c **** 
+  58:UserApp/user_main.c **** 	/* Add new task here */
+  59:UserApp/user_main.c **** };
+  60:UserApp/user_main.c **** 
+  61:UserApp/user_main.c **** uint8_t Tasks_Max = sizeof(Task_Comps)/sizeof(Task_Comps[0]);
+  62:UserApp/user_main.c **** 
+  63:UserApp/user_main.c **** //========================================================================
+  64:UserApp/user_main.c **** // 函数: Task_Handler_Callback
+  65:UserApp/user_main.c **** // 描述: 任务标记回调函数.
+  66:UserApp/user_main.c **** // 参数: None.
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 4
+
+
+  67:UserApp/user_main.c **** // 返回: None.
+  68:UserApp/user_main.c **** //========================================================================
+  69:UserApp/user_main.c **** void Task_Marks_Handler_Callback(void)
+  70:UserApp/user_main.c **** {
+ 113              		.loc 1 70 1 view -0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117 0000 30B5     		push	{r4, r5, lr}
+ 118              	.LCFI2:
+ 119              		.cfi_def_cfa_offset 12
+ 120              		.cfi_offset 4, -12
+ 121              		.cfi_offset 5, -8
+ 122              		.cfi_offset 14, -4
+  71:UserApp/user_main.c **** 	uint8_t i;
+ 123              		.loc 1 71 2 view .LVU12
+  72:UserApp/user_main.c **** 	for(i=0; i<Tasks_Max; i++)
+ 124              		.loc 1 72 2 view .LVU13
+ 125              	.LVL5:
+ 126              		.loc 1 72 7 is_stmt 0 view .LVU14
+ 127 0002 0023     		movs	r3, #0
+ 128              		.loc 1 72 2 view .LVU15
+ 129 0004 01E0     		b	.L5
+ 130              	.LVL6:
+ 131              	.L6:
+ 132              		.loc 1 72 24 is_stmt 1 discriminator 2 view .LVU16
+ 133              		.loc 1 72 25 is_stmt 0 discriminator 2 view .LVU17
+ 134 0006 0133     		adds	r3, r3, #1
+ 135              	.LVL7:
+ 136              		.loc 1 72 25 discriminator 2 view .LVU18
+ 137 0008 DBB2     		uxtb	r3, r3
+ 138              	.LVL8:
+ 139              	.L5:
+ 140              		.loc 1 72 11 is_stmt 1 discriminator 1 view .LVU19
+ 141              		.loc 1 72 12 is_stmt 0 discriminator 1 view .LVU20
+ 142 000a 114A     		ldr	r2, .L9
+ 143 000c 1278     		ldrb	r2, [r2]
+ 144              		.loc 1 72 2 discriminator 1 view .LVU21
+ 145 000e 9A42     		cmp	r2, r3
+ 146 0010 1DD9     		bls	.L8
+  73:UserApp/user_main.c **** 	{
+  74:UserApp/user_main.c **** 		if(Task_Comps[i].TIMCount)    /* If the time is not 0 */
+ 147              		.loc 1 74 3 is_stmt 1 view .LVU22
+ 148              		.loc 1 74 19 is_stmt 0 view .LVU23
+ 149 0012 5A00     		lsls	r2, r3, #1
+ 150 0014 D218     		adds	r2, r2, r3
+ 151 0016 9000     		lsls	r0, r2, #2
+ 152 0018 0E4A     		ldr	r2, .L9+4
+ 153 001a 1218     		adds	r2, r2, r0
+ 154 001c 5288     		ldrh	r2, [r2, #2]
+ 155              		.loc 1 74 5 view .LVU24
+ 156 001e 002A     		cmp	r2, #0
+ 157 0020 F1D0     		beq	.L6
+  75:UserApp/user_main.c **** 		{
+  76:UserApp/user_main.c **** 			Task_Comps[i].TIMCount--;  /* Time counter decrement */
+ 158              		.loc 1 76 4 is_stmt 1 view .LVU25
+ 159              		.loc 1 76 26 is_stmt 0 view .LVU26
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 5
+
+
+ 160 0022 013A     		subs	r2, r2, #1
+ 161 0024 92B2     		uxth	r2, r2
+ 162 0026 5800     		lsls	r0, r3, #1
+ 163 0028 C018     		adds	r0, r0, r3
+ 164 002a 8400     		lsls	r4, r0, #2
+ 165 002c 0948     		ldr	r0, .L9+4
+ 166 002e 0019     		adds	r0, r0, r4
+ 167 0030 4280     		strh	r2, [r0, #2]
+  77:UserApp/user_main.c **** 			if(Task_Comps[i].TIMCount == 0)  /* If time arrives */
+ 168              		.loc 1 77 4 is_stmt 1 view .LVU27
+ 169              		.loc 1 77 6 is_stmt 0 view .LVU28
+ 170 0032 002A     		cmp	r2, #0
+ 171 0034 E7D1     		bne	.L6
+  78:UserApp/user_main.c **** 			{
+  79:UserApp/user_main.c **** 				/*Resume the timer value and try again */
+  80:UserApp/user_main.c **** 				Task_Comps[i].TIMCount = Task_Comps[i].TRITime;  
+ 172              		.loc 1 80 5 is_stmt 1 view .LVU29
+ 173              		.loc 1 80 43 is_stmt 0 view .LVU30
+ 174 0036 074C     		ldr	r4, .L9+4
+ 175 0038 5A00     		lsls	r2, r3, #1
+ 176 003a D518     		adds	r5, r2, r3
+ 177 003c A800     		lsls	r0, r5, #2
+ 178 003e 2018     		adds	r0, r4, r0
+ 179 0040 8588     		ldrh	r5, [r0, #4]
+ 180              		.loc 1 80 28 view .LVU31
+ 181 0042 4580     		strh	r5, [r0, #2]
+  81:UserApp/user_main.c **** 				Task_Comps[i].Run = 1;    /* The task can be run */
+ 182              		.loc 1 81 5 is_stmt 1 view .LVU32
+ 183              		.loc 1 81 23 is_stmt 0 view .LVU33
+ 184 0044 D118     		adds	r1, r2, r3
+ 185 0046 8A00     		lsls	r2, r1, #2
+ 186 0048 0121     		movs	r1, #1
+ 187 004a 1155     		strb	r1, [r2, r4]
+ 188 004c DBE7     		b	.L6
+ 189              	.L8:
+  82:UserApp/user_main.c **** 			}
+  83:UserApp/user_main.c **** 		}
+  84:UserApp/user_main.c **** 	}
+  85:UserApp/user_main.c **** }
+ 190              		.loc 1 85 1 view .LVU34
+ 191              		@ sp needed
+ 192 004e 30BD     		pop	{r4, r5, pc}
+ 193              	.L10:
+ 194              		.align	2
+ 195              	.L9:
+ 196 0050 00000000 		.word	.LANCHOR1
+ 197 0054 00000000 		.word	.LANCHOR0
+ 198              		.cfi_endproc
+ 199              	.LFE43:
+ 201              		.section	.text.Task_Pro_Handler_Callback,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	Task_Pro_Handler_Callback
+ 204              		.syntax unified
+ 205              		.code	16
+ 206              		.thumb_func
+ 207              		.fpu softvfp
+ 209              	Task_Pro_Handler_Callback:
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 6
+
+
+ 210              	.LFB44:
+  86:UserApp/user_main.c **** 
+  87:UserApp/user_main.c **** //========================================================================
+  88:UserApp/user_main.c **** // 函数: Task_Pro_Handler_Callback
+  89:UserApp/user_main.c **** // 描述: 任务处理回调函数.
+  90:UserApp/user_main.c **** // 参数: None.
+  91:UserApp/user_main.c **** // 返回: None.
+  92:UserApp/user_main.c **** //========================================================================
+  93:UserApp/user_main.c **** void Task_Pro_Handler_Callback(void)
+  94:UserApp/user_main.c **** {
+ 211              		.loc 1 94 1 is_stmt 1 view -0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 0
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215 0000 10B5     		push	{r4, lr}
+ 216              	.LCFI3:
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 4, -8
+ 219              		.cfi_offset 14, -4
+  95:UserApp/user_main.c **** 	uint8_t i;
+ 220              		.loc 1 95 2 view .LVU36
+  96:UserApp/user_main.c **** 	for(i=0; i<Tasks_Max; i++)
+ 221              		.loc 1 96 2 view .LVU37
+ 222              	.LVL9:
+ 223              		.loc 1 96 7 is_stmt 0 view .LVU38
+ 224 0002 0024     		movs	r4, #0
+ 225              		.loc 1 96 2 view .LVU39
+ 226 0004 01E0     		b	.L12
+ 227              	.LVL10:
+ 228              	.L13:
+ 229              		.loc 1 96 24 is_stmt 1 discriminator 2 view .LVU40
+ 230              		.loc 1 96 25 is_stmt 0 discriminator 2 view .LVU41
+ 231 0006 0134     		adds	r4, r4, #1
+ 232              	.LVL11:
+ 233              		.loc 1 96 25 discriminator 2 view .LVU42
+ 234 0008 E4B2     		uxtb	r4, r4
+ 235              	.LVL12:
+ 236              	.L12:
+ 237              		.loc 1 96 11 is_stmt 1 discriminator 1 view .LVU43
+ 238              		.loc 1 96 12 is_stmt 0 discriminator 1 view .LVU44
+ 239 000a 0B4B     		ldr	r3, .L16
+ 240 000c 1B78     		ldrb	r3, [r3]
+ 241              		.loc 1 96 2 discriminator 1 view .LVU45
+ 242 000e A342     		cmp	r3, r4
+ 243 0010 10D9     		bls	.L15
+  97:UserApp/user_main.c **** 	{
+  98:UserApp/user_main.c **** 		if(Task_Comps[i].Run) /* If task can be run */
+ 244              		.loc 1 98 3 is_stmt 1 view .LVU46
+ 245              		.loc 1 98 19 is_stmt 0 view .LVU47
+ 246 0012 6300     		lsls	r3, r4, #1
+ 247 0014 1B19     		adds	r3, r3, r4
+ 248 0016 9A00     		lsls	r2, r3, #2
+ 249 0018 084B     		ldr	r3, .L16+4
+ 250 001a D35C     		ldrb	r3, [r2, r3]
+ 251              		.loc 1 98 5 view .LVU48
+ 252 001c 002B     		cmp	r3, #0
+ 253 001e F2D0     		beq	.L13
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 7
+
+
+  99:UserApp/user_main.c **** 		{
+ 100:UserApp/user_main.c **** 			Task_Comps[i].Run = 0;    /* Flag clear 0 */
+ 254              		.loc 1 100 4 is_stmt 1 view .LVU49
+ 255              		.loc 1 100 22 is_stmt 0 view .LVU50
+ 256 0020 064A     		ldr	r2, .L16+4
+ 257 0022 6300     		lsls	r3, r4, #1
+ 258 0024 1819     		adds	r0, r3, r4
+ 259 0026 8100     		lsls	r1, r0, #2
+ 260 0028 0020     		movs	r0, #0
+ 261 002a 8854     		strb	r0, [r1, r2]
+ 101:UserApp/user_main.c **** 			Task_Comps[i].TaskHook();  /* Run task */
+ 262              		.loc 1 101 4 is_stmt 1 view .LVU51
+ 263              		.loc 1 101 17 is_stmt 0 view .LVU52
+ 264 002c 5218     		adds	r2, r2, r1
+ 265 002e 9368     		ldr	r3, [r2, #8]
+ 266              		.loc 1 101 4 view .LVU53
+ 267 0030 9847     		blx	r3
+ 268              	.LVL13:
+ 269 0032 E8E7     		b	.L13
+ 270              	.L15:
+ 102:UserApp/user_main.c **** 		}
+ 103:UserApp/user_main.c **** 	}
+ 104:UserApp/user_main.c **** }
+ 271              		.loc 1 104 1 view .LVU54
+ 272              		@ sp needed
+ 273              	.LVL14:
+ 274              		.loc 1 104 1 view .LVU55
+ 275 0034 10BD     		pop	{r4, pc}
+ 276              	.L17:
+ 277 0036 C046     		.align	2
+ 278              	.L16:
+ 279 0038 00000000 		.word	.LANCHOR1
+ 280 003c 00000000 		.word	.LANCHOR0
+ 281              		.cfi_endproc
+ 282              	.LFE44:
+ 284              		.global	Tasks_Max
+ 285              		.section	.data.Task_Comps,"aw"
+ 286              		.align	2
+ 287              		.set	.LANCHOR0,. + 0
+ 290              	Task_Comps:
+ 291 0000 00       		.byte	0
+ 292 0001 00       		.space	1
+ 293 0002 1400     		.short	20
+ 294 0004 1400     		.short	20
+ 295 0006 0000     		.space	2
+ 296 0008 00000000 		.word	basicTask_entry
+ 297 000c 00       		.byte	0
+ 298 000d 00       		.space	1
+ 299 000e 1400     		.short	20
+ 300 0010 1400     		.short	20
+ 301 0012 0000     		.space	2
+ 302 0014 00000000 		.word	pulseOut_task
+ 303 0018 00       		.byte	0
+ 304 0019 00       		.space	1
+ 305 001a 6400     		.short	100
+ 306 001c 6400     		.short	100
+ 307 001e 0000     		.space	2
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 8
+
+
+ 308 0020 00000000 		.word	uart_timeOut
+ 309              		.section	.data.Tasks_Max,"aw"
+ 310              		.set	.LANCHOR1,. + 0
+ 313              	Tasks_Max:
+ 314 0000 03       		.byte	3
+ 315              		.text
+ 316              	.Letext0:
+ 317              		.file 2 "c:\\tools\\gd\\embeddedbuilder_v1.4.1.23782\\embeddedbuilder_v1.4.1.23782\\tools\\gnu too
+ 318              		.file 3 "c:\\tools\\gd\\embeddedbuilder_v1.4.1.23782\\embeddedbuilder_v1.4.1.23782\\tools\\gnu too
+ 319              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h"
+ 320              		.file 5 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h"
+ 321              		.file 6 "UserApp/inc/user_main.h"
+ 322              		.file 7 "Bsp/inc/bsp_led.h"
+ 323              		.file 8 "Bsp/inc/bsp_uart.h"
+ 324              		.file 9 "Bsp/inc/bsp_key.h"
+ 325              		.file 10 "Bsp/inc/bsp_flash.h"
+ 326              		.file 11 "UserApp/inc/pulseOut.h"
+ARM GAS  C:\Users\15612\AppData\Local\Temp\ccduEHTe.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 user_main.c
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:16     .text.basicTask_entry:00000000 $t
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:24     .text.basicTask_entry:00000000 basicTask_entry
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:49     .text.user_main:00000000 $t
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:56     .text.user_main:00000000 user_main
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:83     .text.task1:00000000 $t
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:90     .text.task1:00000000 task1
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:104    .text.Task_Marks_Handler_Callback:00000000 $t
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:111    .text.Task_Marks_Handler_Callback:00000000 Task_Marks_Handler_Callback
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:196    .text.Task_Marks_Handler_Callback:00000050 $d
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:202    .text.Task_Pro_Handler_Callback:00000000 $t
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:209    .text.Task_Pro_Handler_Callback:00000000 Task_Pro_Handler_Callback
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:279    .text.Task_Pro_Handler_Callback:00000038 $d
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:313    .data.Tasks_Max:00000000 Tasks_Max
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:286    .data.Task_Comps:00000000 $d
+C:\Users\15612\AppData\Local\Temp\ccduEHTe.s:290    .data.Task_Comps:00000000 Task_Comps
+
+UNDEFINED SYMBOLS
+led_sta_update_20ms
+bsp_keyScan_20ms
+sysParmReadFlash
+uart_init
+pluseOutInit
+pulseOut_task
+uart_timeOut
